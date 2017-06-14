@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_storeCard
+
+block content
+  .inner
+    h2= title
+    .stores
+      if stores.length > 0
+        each store in stores
+          +storeCard(store)
+      else 
+        p No stores found! 
+          a(href="/add") Add one here
