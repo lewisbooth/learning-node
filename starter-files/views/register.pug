@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .inner
+    form.form(action='register' method='POST')
+      h2 #{title}
+      label(for='name') Name
+      input(type='text' name='name' required value=`${body.name || ''}`)
+      label(for='email') Email
+      input(type='text' name='email' required value=`${body.email || ''}`)
+      label(for='password') Password
+      input(type='password' name='password' required value=`${body.password || ''}`)
+      label(for='password-confirm') Confirm Password
+      input(type='password' name='password-confirm' required value=`${body.password-confirm || ''}`)
+      input.button(type='submit' value='Register')
