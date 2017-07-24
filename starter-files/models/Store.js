@@ -40,6 +40,13 @@ const storeSchema = new mongoose.Schema({
   }
 });
 
+// Define indexes (faster searching!)
+storeSchema.index({
+  name: 'text', 
+  description: 'text'
+});
+
+// Create a slug for the store, adding an index at the end if multiple stores are found with the same name
 storeSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
     return next();
@@ -54,6 +61,7 @@ storeSchema.pre('save', async function(next) {
   next();
 });
 
+// Get ordered list of most common store tags
 storeSchema.statics.getTagsList = function() {
   return this.aggregate([
     { $unwind: '$tags' },

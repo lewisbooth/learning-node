@@ -90,4 +90,15 @@ router.post('/account/reset/:token',
   catchErrors(authController.updatePassword)
 );
 
+
+/* 
+  API
+*/
+
+router.get('/api/search', 
+  catchErrors(storeController.searchStores)
+);
+
+
+
 module.exports = router;
