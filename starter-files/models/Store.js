@@ -46,6 +46,10 @@ storeSchema.index({
   description: 'text'
 });
 
+storeSchema.index({
+  location: '2dsphere'
+})
+
 // Create a slug for the store, adding an index at the end if multiple stores are found with the same name
 storeSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
