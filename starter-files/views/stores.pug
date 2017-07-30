@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_storeCard
+include mixins/_pagination
 
 block content
   .inner
@@ -12,3 +13,4 @@ block content
       else 
         p No stores found! 
           a(href="/add") Add one here
+    +pagination(page, pages, count)
